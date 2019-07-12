@@ -11,26 +11,10 @@ import {HttpResponse} from '@angular/common/http';
 
 // Hobbies by type and day
 export class HobbiesByTypeComponent implements OnInit {
-  private fetchedHobbies: HobbyList;
-  get hobbyData(): HobbyList {
-    return this.fetchedHobbies;
-  }
-  set hobbyData(hobbies: HobbyList) {
-    this.fetchedHobbies = hobbies;
-  }
 
   constructor() { }
 
-  fetchData() {
-    Axios.get('https://nikodevv.com/api/hobbies').then(
-      (response: HttpResponse) => {
-        this.hobbyData(response.data);
-        console.log(this.hobbyData);
-      }
-    );
-  }
   ngOnInit() {
-    fetchData();
   }
 
 }
