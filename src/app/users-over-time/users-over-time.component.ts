@@ -1,9 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {Hobby} from '../../models/models';
+import {ChartDataSets} from 'chart.js';
 import Axios from 'axios';
-import {HttpResponse} from '@angular/common/http';
-import _ from 'lodash';
-
+import * as _ from 'lodash';
 
 @Component({
   selector: 'app-users-over-time',
@@ -11,21 +10,32 @@ import _ from 'lodash';
   styleUrls: ['./users-over-time.component.scss']
 })
 export class UsersOverTimeComponent implements OnInit {
+  public barChartOptions: {
+    scaleShowVerticalLines: false,
+    responsive: true
+  };
   private fetchedHobbies: Array<Hobby>;
-  private hobbiesArray: Array<string>;
+  private hobbiesArray: Array<string> = [];
+  public data = [{ data : [] , label: 'placeholder'}];
 
   get hobbyData(): Array<Hobby> {
     return this.fetchedHobbies;
   }
-  set hobbyData(hobbies: HobbyList) {
+  set hobbyData(hobbies) {
     this.fetchedHobbies = hobbies;
+  }
+  get labels(): Array<string> {
+    return this.hobbiesArray;
+  }
+  set labels(value) {
+    this.hobbiesArray = value;
   }
 
   constructor() { }
 
   fetchData() {
     return Axios.get('https://nikodevv.com/api/hobbies').then(
-      (response: HttpResponse) => {
+      (response) => {
         this.hobbyData = response.data;
       }
     );
@@ -37,15 +47,18 @@ export class UsersOverTimeComponent implements OnInit {
     const occurrences = [];
     _.transform(this.hobbyData, (result, value) => {
       const hobby = value.value;
+      console.log("hobby iss");
       if (labels.includes(hobby)) {
-        return occurrences[labelMap[hobby]] += 1;
+        occurrences[labelMap[hobby]] += 1;
+      } else {
+        labels.push(hobby);
+        occurrences.push(1);
+        labelMap[hobby] = labels.length - 1;
       }
-      labels.push(hobby);
-      occurrences.push(1);
-      labelMap[hobby] = labels.length - 1;
-      console.log(labels);
-      console.log(occurrences);
     });
+
+    this.labels = labels;
+    this.data = [{ data: occurrences , label: 'placeholder'}];
   }
 
   async loadData() {

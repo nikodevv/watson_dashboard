@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import {HobbyList} from '../../models/models';
 
 @Component({
   selector: 'app-hobbies-by-type',
