@@ -17,6 +17,15 @@ export class UsersOverTimeComponent implements OnInit {
   private fetchedHobbies: Array<Hobby>;
   private hobbiesArray: Array<string> = [];
   public data = [{ data : [] , label: 'placeholder'}];
+  public chartOptions = {
+    responsive: true,
+    scales: {
+      yAxes: [{
+          ticks: {
+            beginAtZero: true
+          }
+        }]
+  }};
 
   get hobbyData(): Array<Hobby> {
     return this.fetchedHobbies;
@@ -47,10 +56,10 @@ export class UsersOverTimeComponent implements OnInit {
     const occurrences = [];
     _.transform(this.hobbyData, (result, value) => {
       const hobby = value.value;
-      console.log("hobby iss");
       if (labels.includes(hobby)) {
         occurrences[labelMap[hobby]] += 1;
       } else {
+        console.log(hobby);
         labels.push(hobby);
         occurrences.push(1);
         labelMap[hobby] = labels.length - 1;
