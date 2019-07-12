@@ -1,9 +1,8 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import {Hobby} from '../../models/models';
 import {ChartDataSets} from 'chart.js';
-import Axios from 'axios';
 import * as _ from 'lodash';
-import {DataStore} from '../../services/DataStore';
+import {DataService} from '../../services/DataService';
 
 
 @Component({
@@ -12,10 +11,6 @@ import {DataStore} from '../../services/DataStore';
   styleUrls: ['./hobby-popularity-graph.component.scss']
 })
 export class HobbyPopularityGraphComponent implements OnInit, OnDestroy {
-  public barChartOptions: {
-    scaleShowVerticalLines: false,
-    responsive: true
-  };
   public data = [
     { data : [] , label: 'Hobbies (All Time)'},
     { data: [], label: 'Hobbies (last 24 hours)' }
@@ -32,7 +27,7 @@ export class HobbyPopularityGraphComponent implements OnInit, OnDestroy {
   public labels: Array<string> = [];
   private hobbiesSubscription;
 
-  constructor(private dataStore: DataStore) { }
+  constructor(private dataStore: DataService) { }
 
   organizeData(hobbyData: Array<Hobby>) {
     if (hobbyData.length === 0) {

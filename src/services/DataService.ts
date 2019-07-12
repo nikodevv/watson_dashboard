@@ -4,7 +4,7 @@ import Axios from 'axios';
 import {Hobby} from '../models/models';
 
 @Injectable()
-export class DataStore {
+export class DataService {
   private hobbies: BehaviorSubject<Array<Hobby>> = new BehaviorSubject([]);
 
   public readonly hobbiesData: Observable<Array<Hobby>> = this.hobbies.asObservable();

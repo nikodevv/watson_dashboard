@@ -6,7 +6,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HomepageComponent } from './homepage/homepage.component';
 import { HobbyPopularityGraphComponent } from './hobby-popularity-graph/hobby-popularity-graph.component';
-import {DataStore} from '../services/DataStore';
+import {DataService} from '../services/DataService';
 
 
 @NgModule({
@@ -20,7 +20,7 @@ import {DataStore} from '../services/DataStore';
     AppRoutingModule,
     ChartsModule
   ],
-  providers: [DataStore],
+  providers: [DataService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
