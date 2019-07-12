@@ -4,12 +4,13 @@ import {ChartDataSets} from 'chart.js';
 import Axios from 'axios';
 import * as _ from 'lodash';
 
+
 @Component({
-  selector: 'app-users-over-time',
-  templateUrl: './users-over-time.component.html',
-  styleUrls: ['./users-over-time.component.scss']
+  selector: 'app-hobby-popularity-graph',
+  templateUrl: './hobby-popularity-graph.component.html',
+  styleUrls: ['./hobby-popularity-graph.component.scss']
 })
-export class UsersOverTimeComponent implements OnInit {
+export class HobbyPopularityGraphComponent implements OnInit {
   public barChartOptions: {
     scaleShowVerticalLines: false,
     responsive: true
@@ -21,11 +22,11 @@ export class UsersOverTimeComponent implements OnInit {
     responsive: true,
     scales: {
       yAxes: [{
-          ticks: {
-            beginAtZero: true
-          }
-        }]
-  }};
+        ticks: {
+          beginAtZero: true
+        }
+      }]
+    }};
 
   get hobbyData(): Array<Hobby> {
     return this.fetchedHobbies;
@@ -79,3 +80,4 @@ export class UsersOverTimeComponent implements OnInit {
     this.loadData();
   }
 }
+
