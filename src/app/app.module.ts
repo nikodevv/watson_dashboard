@@ -7,13 +7,15 @@ import { AppComponent } from './app.component';
 import { HomepageComponent } from './homepage/homepage.component';
 import { HobbyPopularityGraphComponent } from './hobby-popularity-graph/hobby-popularity-graph.component';
 import {DataService} from '../services/DataService';
+import { UsersTimeGraphComponent } from './users-time-graph/users-time-graph.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     HomepageComponent,
-    HobbyPopularityGraphComponent
+    HobbyPopularityGraphComponent,
+    UsersTimeGraphComponent
   ],
   imports: [
     BrowserModule,
