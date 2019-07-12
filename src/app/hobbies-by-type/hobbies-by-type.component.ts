@@ -1,7 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import Axios from 'axios';
 import {HobbyList} from '../../models/models';
-import {HttpResponse} from '@angular/common/http';
 
 @Component({
   selector: 'app-hobbies-by-type',
