@@ -6,6 +6,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HomepageComponent } from './homepage/homepage.component';
 import { HobbyPopularityGraphComponent } from './hobby-popularity-graph/hobby-popularity-graph.component';
+import {DataStore} from '../services/DataStore';
 
 
 @NgModule({
@@ -19,7 +20,7 @@ import { HobbyPopularityGraphComponent } from './hobby-popularity-graph/hobby-po
     AppRoutingModule,
     ChartsModule
   ],
-  providers: [],
+  providers: [DataStore],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
